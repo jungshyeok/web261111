@@ -1,0 +1,288 @@
+
+:root {
+  --bg: #141e30;
+  --surface: #1f2b44;
+  --text: #f5f5f7;
+  --accent: #4da3ff;
+  --warn: #ff5a5f;
+  --badge: #ffc107;
+  --ink: #222222;
+  --glow: rgba(255, 193, 7, 0.6);
+  --font-title: "Black Han Sans", sans-serif;
+  --font-body: "Noto Sans KR", sans-serif;
+  --gap: 20px;
+}
+
+
+body {
+  margin: 0;
+  padding: 16px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 400;
+}
+
+a {
+  color: var(--accent);
+}
+
+
+main,
+.top,
+.hero,
+footer {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+}
+
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://image.tmdb.org/t/p/w1280/jULvvUymAqM18gIDHbMRfKHbCSB.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
+  padding: 24px;
+  box-sizing: border-box;
+  color: var(--text);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h2 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+
+.basis {
+  margin-top: -8px;
+  color: var(--accent);
+}
+
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px var(--glow);
+}
+
+.poster {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.info {
+  padding: 12px 16px;
+}
+
+.info h3 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.info p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+
+.badge,
+.rank {
+  position: absolute;
+  top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.badge {
+  right: 12px;
+  background: var(--badge);
+  color: var(--ink);
+}
+
+.rank {
+  left: 12px;
+  background: var(--warn);
+  color: var(--text);
+}
+
+
+.change.up::before {
+  content: "▲";
+}
+
+.change.down::before {
+  content: "▼";
+}
+
+.change.new::before {
+  content: "NEW";
+}
+
+.change.up,
+.change.new {
+  color: var(--warn);
+}
+
+.change.down {
+  color: var(--accent);
+}
+
+
+.card.no-poster .poster-fallback {
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-family: var(--font-title);
+  color: var(--text);
+  background: linear-gradient(135deg, var(--accent), var(--surface));
+}
+
+
+.detail-page {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("https://image.tmdb.org/t/p/w1280/jULvvUymAqM18gIDHbMRfKHbCSB.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+.detail img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.detail dl {
+  margin: 0;
+}
+
+.detail dt {
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.detail dd {
+  margin: 4px 0 0;
+  line-height: 1.6;
+}
+
+
+footer {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+
+@media (min-width: 600px) {
+  nav ul {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .board {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero {
+    min-height: 60vh;
+  }
+
+  .hero h2 {
+    font-size: 3rem;
+  }
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.card.hot .badge {
+  background: crimson;
+  color: #fff;
+}
